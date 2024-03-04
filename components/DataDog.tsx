@@ -2,7 +2,7 @@ import { datadogRum } from '@datadog/browser-rum';
 
 datadogRum.init({
   applicationId: '31266d63-0517-440e-98a4-fc263c457d5d',
-  clientToken: 'pub8e10ce0bba84a7c73fe3aa64d27a745f',
+  clientToken: 'pub76c8f641e8120f3863d91da60cf0172b',
   site: 'us5.datadoghq.com',
   service: 'test-app',
   env: 'production',
