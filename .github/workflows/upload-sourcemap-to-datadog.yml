@@ -39,7 +39,7 @@ jobs:
 
       - name: upload sourcemap to datadog
         run: |
-          datadog-ci sourcemaps upload .next/static \
+          pnpm datadog-ci sourcemaps upload .next/static \
           --service=test-app \
           --release-version=$GITHUB_SHA \
           --minified-path-prefix=/_next/static \
