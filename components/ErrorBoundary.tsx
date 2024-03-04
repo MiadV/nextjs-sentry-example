@@ -1,4 +1,5 @@
 import React, { Component, ErrorInfo, ReactNode } from 'react';
+import { datadogRum } from '@datadog/browser-rum';
 
 interface Props {
   children?: ReactNode;
@@ -19,6 +20,13 @@ class ErrorBoundary extends Component<Props, State> {
   }
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+    const renderingError = new Error(error.message);
+    renderingError.name = `ReactRenderingError`;
+    renderingError.stack = errorInfo.componentStack;
+    renderingError.cause = error;
+
+    datadogRum.addError(renderingError);
+
     console.error('Uncaught error:', error, errorInfo);
   }
 

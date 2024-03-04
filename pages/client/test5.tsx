@@ -1,3 +1,5 @@
+import { datadogRum } from '@datadog/browser-rum';
+
 const Test5 = () => (
   <>
     <h1>Client Test 5</h1>
@@ -7,8 +9,8 @@ const Test5 = () => (
           // Some operation the button does, but fails
           throw new Error('Client Test 5');
         } catch (error) {
-          // Sentry.captureException(error);
           console.error('Error:', error);
+          datadogRum.addError(error);
         } finally {
           //
         }
