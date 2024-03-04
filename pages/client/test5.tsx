@@ -1,24 +1,16 @@
-import * as Sentry from "@sentry/nextjs";
-
 const Test5 = () => (
   <>
     <h1>Client Test 5</h1>
     <button
       onClick={() => {
-        const transaction = Sentry.startTransaction({
-          name: "Testing performance",
-        });
-        Sentry.configureScope((scope) => {
-          scope.setSpan(transaction);
-        });
-
         try {
           // Some operation the button does, but fails
-          throw new Error("Client Test 5");
+          throw new Error('Client Test 5');
         } catch (error) {
-          Sentry.captureException(error);
+          // Sentry.captureException(error);
+          console.error('Error:', error);
         } finally {
-          transaction.finish();
+          //
         }
       }}
     >
