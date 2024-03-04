@@ -39,12 +39,11 @@ jobs:
 
       - name: upload sourcemap to datadog
         run: |
-          pnpm datadog-ci sourcemaps upload ./.next/static \
+          datadog-ci sourcemaps upload /.next/static \
           --service=test-app \
           --release-version=$GITHUB_SHA \
           --minified-path-prefix=/_next/static \
-          --repository-url=https://github.com/MiadV/nextjs-sentry-example/ \
-          --dry-run=true \
+          --repository-url=https://github.com/MiadV/nextjs-sentry-example/
         env:
           DATADOG_SITE: us5.datadoghq.com
           DATADOG_API_HOST: api.us5.datadoghq.com
